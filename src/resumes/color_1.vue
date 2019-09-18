@@ -1,3 +1,11 @@
+<!--
+ * @Description: 彩色简历首页
+ * @Author: oldestcrab
+ * @Github:
+ * @Date: 2019-09-18 13:59:58
+ * @LastEditors: oldestcrab
+ * @LastEditTime: 2019-09-18 14:02:02
+ -->
 <template>
   <div class="resume">
     <div class="banner">
@@ -316,7 +324,7 @@
 import Vue from 'vue';
 import { getVueOptions } from './options';
 
-const name = 'cool';
+const name = 'color_1';
 
 export default Vue.component(name, getVueOptions(name));
 </script>

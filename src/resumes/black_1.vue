@@ -1,3 +1,11 @@
+<!--
+ * @Description: 黑白简历首页
+ * @Author: oldestcrab
+ * @Github:
+ * @Date: 2019-05-06 15:19:24
+ * @LastEditors: oldestcrab
+ * @LastEditTime: 2019-09-18 14:12:22
+ -->
 <template>
   <div class="resume">
     <div class="banner">
@@ -308,7 +316,7 @@
       </div>
     </div>
 
-    <img class="picture"/>
+    <!-- <img class="picture"/> -->
   </div>
 </template>
 
@@ -316,14 +324,14 @@
 import Vue from 'vue';
 import { getVueOptions } from './options';
 
-const name = 'cool';
+const name = 'black_1';
 
 export default Vue.component(name, getVueOptions(name));
 </script>
 
 <style lang="less" scoped>
-@accent-color: #34495E;
-@banner-color: #42b883;
+@accent-color: white;
+@banner-color: white;
 @banner-height: 120px;
 @picture-size: 120px;
 @picture-offset: 35px;
@@ -368,7 +376,7 @@ a {
     background-repeat: no-repeat;
     background-size: cover;
   */
-  color: white;
+  color: black;
 
   &__fullname {
     font-size: 32px;
@@ -452,7 +460,8 @@ a {
       display:flex;
       flex-direction:column;
       .item {
-        border-bottom:1px solid #bdbdbd;
+        // border-bottom:1px solid #bdbdbd;
+        border-bottom:1px solid black;
         flex:1;
         width:97%;
         display:flex;
@@ -480,11 +489,12 @@ a {
 
   &__left {
     width: @left-column-width;
-    color: rgba(255, 255, 255, 0.59);
+    // color: rgba(255, 255, 255, 0.59);
+    color: black ;
     background-color: @accent-color;
 
     .section-headline {
-      color: white;
+      color: black;
     }
   .item {
     width:100%;
@@ -543,7 +553,7 @@ a {
   color: rgba(255, 255, 255, 0.59) !important;
 
   &__icon {
-    color: white;
+    color: black;
   }
 }
 
@@ -607,8 +617,8 @@ a {
 
 .squarred-grid-item {
   display: block;
-  border: 1px solid white;
-  color: white;
+  border: 1px solid black;
+  color: black;
   margin-top: 5px;
   padding: 5px;
 }

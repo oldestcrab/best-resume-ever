@@ -12,5 +12,5 @@ firefox_root/
 GeckoChildCrash*
 electroshot-config.json
 tmpaddon*
-/pdf
-/resume
+resume/
+pdf/

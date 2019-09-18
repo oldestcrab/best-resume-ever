@@ -3,148 +3,52 @@
     <div class="banner">
       <div class="banner__fullname">{{ person.name.first }} {{ person.name.middle }} {{ person.name.last }}</div>
       <div class="banner__position">{{ person.position }}</div>
-      <div id="info-flex">
-                <div><span id="phone"><i class='fa fa-phone-square' aria-hidden="true"></i> {{person.contact.phone}}</span></div>
-                <div><span id="email"><a :href='"mailto:" + person.contact.email'>
-                  <i class="fa fa-envelope" aria-hidden="true"></i> {{person.contact.email}}</a></span></div>
-                <!-- <span v-if="person.contact.website" id="website"><a :href='person.contact.website'><i class="fa fa-home" aria-hidden="true"></i> {{person.contact.website}}</a></span> -->
-                <!-- <span v-if="person.contact.github" id="github"><a :href='contactLinks.github'><i class="fa fa-github" aria-hidden="true"></i> {{person.contact.github}}</a></span> -->
-      </div>
-      <!-- <div class="banner__location">{{ lang.born }} {{person.birth.year}} {{ lang.bornIn }} {{person.birth.location}}</div> -->
+      <div class="banner__location">{{ lang.born }} {{person.birth.year}} {{ lang.bornIn }} {{person.birth.location}}</div>
     </div>
 
     <div class="content">
       <div class="content__left">
-        <!-- 自我介绍 -->
         <div class="section">
           <div class="section-headline">
             {{ lang.about }}
           </div>
 
           <div class="section-content section-content--plain">
-            <br/>
             {{ person.about }}
             <br/>
             <br/>
             {{ person.knowledge }}
           </div>
         </div>
-        <span><br/></span>
-        <!-- 兴趣爱好 -->
+
         <div
-          v-if="person.hobbies"
+          v-if="person.skills"
           class="section">
           <div class="section-headline">
-            {{ lang.hobbies }}
+            {{ lang.skills }}
           </div>
 
           <div class="section-content-grid">
             <a
-              v-for="(hobbies, index) in person.hobbies"
+              v-for="(skill, index) in person.skills"
               class="grid-item"
               :key="index"
-              :href="hobbies.url">
+              :href="skill.url">
               <span class="squarred-grid-item">
-                {{ hobbies.name }}
+                {{ skill.name }}
               </span>
-              <span><br/></span>
             </a>
           </div>
-          <span><br/></span>
-
-    <!-- 技能 -->
-    <div class="section-headline">
-      {{ lang.skills }}
-    </div>
-    <div class="section-content-grid">
-      <a
-        v-for="(skills, index) in person.skills"
-        class="grid-item"
-        :key="index"
-        :href="skills.url">
-        <span class="squarred-grid-item">
-          {{ skills.name }}
-        </span>
-        <span><br/></span>
-      </a>
-    </div>
-    <span><br/></span>
-    <!-- 个人信息 -->
-    <div class="section-headline">
-      {{ lang.contact }}
-    </div>
-    <div class="item">
-      <div class="icon">
-        <i class="material-icons">account_circle</i>
-      </div>
-      <div class="text">
-          {{ lang.born }} {{person.birth.year}} {{ lang.bornIn }} {{person.birth.location}}
-      </div>
-    </div>
-
-    <div class="item">
-      <div class="icon">
-        <i class="material-icons">location_city</i>
-      </div>
-      <div class="text">
-          {{person.contact.city}}，{{person.contact.street}}
-      </div>
-    </div>
-
-    <a :href="contactLinks.phone">
-      <div class="item">
-        <div class="icon">
-          <i class="material-icons">phone</i>
-        </div>
-        <div class="text">
-          {{person.contact.phone}}
-        </div>
-      </div>
-    </a>
-
-    <a :href="contactLinks.email">
-      <div class="item">
-        <div class="icon">
-          <i class="material-icons">email</i>
-        </div>
-        <div class="text">
-          {{person.contact.email}}
-        </div>
-      </div>
-    </a>
-
-    <a v-if="person.contact.github" :href="contactLinks.github" target="_blank">
-      <div class="item">
-        <div class="icon">
-          <i class="fa fa-github"></i>
-        </div>
-        <div class="text">
-          <span>@{{person.contact.github}}</span>
-          <span>github.com/{{person.contact.github}}</span>
-        </div>
-      </div>
-    </a>
-
-    <a v-if="person.contact.website" :href="person.contact.website" target="_blank">
-      <div class="item">
-        <div class="icon">
-          <i class="material-icons">language</i>
-        </div>
-        <div class="text">
-          <span>{{person.contact.website}}</span>
-        </div>
-      </div>
-    </a>
         </div>
 
-        <!-- <div class="section">
+        <div class="section">
           <div class="section-headline">
             {{ lang.contact }}
           </div>
 
           <div class="section-content section-content--plain">
             <div class="section-link">
-              <i class="section-link__icon material-icons">phone</i>{{ person.contact.phone }}
+              <i class="section-link__icon material-icons">business</i>{{ person.contact.street }}
             </div>
 
             <a
@@ -154,7 +58,7 @@
             </a>
 
             <div class="section-link">
-              <i class="section-link__icon material-icons">business</i>{{ person.contact.street }}
+              <i class="section-link__icon material-icons">phone</i>{{ person.contact.phone }}
             </div>
 
             <a
@@ -185,26 +89,16 @@
               <i class="section-link__icon fa fa-medium"></i>{{ person.contact.medium }}
             </a>
           </div>
-        </div> -->
+        </div>
       </div>
 
       <div class="content__right">
         <div class="section">
-          <!-- 工作经历 -->
           <div class="section-headline">
             <i class="section-headline__icon material-icons">work</i>{{ lang.experience }}
           </div>
 
-          <div class="block" >
-            <div class="block-helper" v-for="experience in person.experience" :key="experience.company" >
-            <h3 class="headline" >{{experience.position}} - {{experience.company}}</h3>
-              <div class="subheadline">{{experience.timeperiod}}</div>
-              <p class="info">
-                <!-- {{experience.description}} -->
-              </p>
-            </div>
-          </div>
-          <!-- <div class="section-content">
+          <div class="section-content">
             <a
               v-for="(experience, index) in person.experience"
               :key="index"
@@ -220,24 +114,11 @@
               <div class="section-content__text">{{ experience.timeperiod }}</div>
               <span class="section-content__text--light">{{ experience.description }}</span>
             </a>
-          </div> -->
+          </div>
         </div>
 
-        <!-- 教育经历 -->
         <div class="section">
           <div class="section-headline">
-            <i class="section-headline__icon material-icons">school</i>{{ lang.education }}
-          </div>
-          <div class="block" >
-            <div class="block-helper" v-for="education in person.education" :key="education.degree">
-            <h3 class="headline">{{education.degree}} {{education.description}}</h3>
-            <div class="subheadline">{{education.timeperiod}}</div>
-            <p class="info">
-                <!-- {{education.description}} -->
-              </p>
-          </div>
-          </div>
-          <!-- <div class="section-headline">
             <i class="section-headline__icon material-icons">school</i>{{ lang.education }}
           </div>
 
@@ -253,25 +134,17 @@
               <span class="section-content__text"> {{ education.timeperiod }} </span>
               <span class="section-content__text--light"> {{ education.description }} </span>
             </a>
-          </div> -->
+          </div>
         </div>
 
-        <!-- 专业技能 -->
         <div
-          v-if="person.professional"
+          v-if="person.projects"
           class="section">
           <div class="section-headline">
-            <i class="section-headline__icon material-icons">code</i>{{ lang.professional }}
+            <i class="section-headline__icon material-icons">code</i>{{ lang.projects }}
           </div>
-          <div class="block" >
-            <div class="block-helper" v-for="professional in person.professional" :key="professional.name">
-            <h3 class="headline">{{professional.name}}</h3>
-            <!-- <p class="info">
-              {{skill.level}}
-            </p> -->
-          </div>
-          </div>
-          <!-- <div class="section-content-grid">
+
+          <div class="section-content-grid">
             <a v-for="(project, index) in person.projects" :key="index"
               class="section-content__item-grid"
               :href="project.url">
@@ -279,12 +152,10 @@
               <span class="section-content__subheader">{{ project.platform }}</span>
               <span class="section-content__text"> {{ project.description }} </span>
             </a>
-          </div> -->
+          </div>
         </div>
 
-
-        <!-- 贡献 -->
-        <!-- <div
+        <div
           v-if="person.contributions"
           class="section">
           <div class="section-headline">
@@ -304,7 +175,7 @@
               </span>
             </a>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
 
@@ -353,7 +224,7 @@ a {
   height: @picture-size;
   width: @picture-size;
   border-radius: 50%;
-  border: 3px solid @accent-color;
+  border: 5px solid @accent-color;
   content: url('../../resume/id.jpg');
   z-index: 2;
 }
@@ -381,19 +252,6 @@ a {
   &__location {
     font-size: 12px;
   }
-  // 开头电话邮箱
-  #info-flex {
-                display:inline-block;
-                margin-top:20px;
-                font-size:14px;
-
-                span {
-                    margin-right:25px;
-                }
-                i {
-                    margin-right:5px;
-                }
-            }
 }
 
 .content {
@@ -405,77 +263,6 @@ a {
   &__right {
     height: 100%;
     padding: @base-padding;
-    .block {
-    width:90%;
-    position:relative;
-    background-color:#ffffff;
-    padding:20px;
-    // margin-top:5px;
-    // margin-bottom:5px;
-    display:inline-block;
-    box-shadow:0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
-    .headline {
-      font-weight:300;
-      // display:block;
-      font-size:15px;
-      color:rgba(0,0,0,0.870588);
-    }
-    .subheadline {
-      color:rgba(0,0,0,0.541176);
-      display:block;
-      font-size:14px;
-      font-weight:300;
-    }
-    .info {
-      font-size:14px;
-      color:rgba(0,0,0,0.870588);
-      margin-bottom:0;
-      padding-top:2px;
-    }
-    .icon {
-      width:16%;
-      float:left;
-      margin-left:0;
-      .fa, .material-icons {
-        text-align:center;
-        display:block;
-        font-size:30pt;
-      }
-    }
-    .content {
-      width:80%;
-      position:absolute;
-      height:96%;
-      left:17%;
-      padding-right:3%;
-      text-align:left;
-      display:flex;
-      flex-direction:column;
-      .item {
-        border-bottom:1px solid #bdbdbd;
-        flex:1;
-        width:97%;
-        display:flex;
-        justify-content:center;
-        flex-direction:column;
-        text-align:left;
-        padding-top:0;
-        span {
-          color:#d8ab94;
-          margin-top:0;
-          font-size:10pt;
-          line-height:16pt;
-        }
-        p {
-          margin-top:5px;
-        }
-      }
-      .item:last-of-type {
-        border-bottom-style:none;
-        border-bottom-style:none;
-      }
-    }
-  }
   }
 
   &__left {
@@ -486,33 +273,7 @@ a {
     .section-headline {
       color: white;
     }
-  .item {
-    width:100%;
-    margin-top:13px;
-    float:left;
-    .fa, .material-icons {
-      display:inherit;
-      text-align:left;
-    }
-    .icon {
-      width:20%;
-      float:left;
-    }
-    .text {
-      float:right;
-      width:69%;
-      padding-right:10%;
-      padding-top:1%;
-      // display:inherit;
-      font-size:15px;
-      font-weight:300;
-
-    }
-    span {
-      font-weight:300;
-    }
   }
-}
 
   &__right {
     flex: 1;
